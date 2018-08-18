@@ -12,10 +12,19 @@ public:
 
   /*
   * Coefficients
-  */ 
+  */
   double Kp;
   double Ki;
   double Kd;
+
+  int N_STEPS;
+  double run_error;
+  // Current CTE
+  double cte;
+  // Previous CTE
+  double prev_cte;
+  // Integral CTE
+  double integral_cte;
 
   /*
   * Constructor
@@ -41,6 +50,15 @@ public:
   * Calculate the total PID error.
   */
   double TotalError();
+
+
+  double getDiffCTE();
+  double getIntCTE();
+  void setCTE(double cte_);
+  void reset();
+  double calculateSteeringValue();
+  double run();
+  void twiddle();
 };
 
 #endif /* PID_H */
