@@ -2,6 +2,12 @@
 #define PID_H
 
 class PID {
+private:
+  bool is_first_twiddle_check_complete;
+  bool is_second_twiddle_check_complete;
+  bool continue_running;
+  bool should_twiddle_up;
+  bool should_twiddle_down;
 public:
   /*
   * Errors
@@ -19,6 +25,7 @@ public:
 
   int N_STEPS;
   double run_error;
+  double best_error;
   // Current CTE
   double cte;
   // Previous CTE
@@ -59,6 +66,15 @@ public:
   double calculateSteeringValue();
   double run();
   void twiddle();
+  void updateTwiddleFlags();
+  void twiddle_p();
+  void twiddle_i();
+  void twiddle_d();
+
+  bool twiddling_p;
+  bool twiddling_i;
+  bool twiddling_d;
+  void twiddle_next_parameter();
 };
 
 #endif /* PID_H */
