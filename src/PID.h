@@ -3,11 +3,8 @@
 
 class PID {
 private:
-  bool is_first_twiddle_check_complete;
-  bool is_second_twiddle_check_complete;
-  bool continue_running;
-  bool should_twiddle_up;
-  bool should_twiddle_down;
+  void reset();
+  void twiddle_next_parameter();
 public:
   /*
   * Errors
@@ -22,16 +19,6 @@ public:
   double Kp;
   double Ki;
   double Kd;
-
-  int N_STEPS;
-  double run_error;
-  double best_error;
-  // Current CTE
-  double cte;
-  // Previous CTE
-  double prev_cte;
-  // Integral CTE
-  double integral_cte;
 
   /*
   * Constructor
@@ -58,23 +45,6 @@ public:
   */
   double TotalError();
 
-
-  double getDiffCTE();
-  double getIntCTE();
-  void setCTE(double cte_);
-  void reset();
-  double calculateSteeringValue();
-  double run();
-  void twiddle();
-  void updateTwiddleFlags();
-  void twiddle_p();
-  void twiddle_i();
-  void twiddle_d();
-
-  bool twiddling_p;
-  bool twiddling_i;
-  bool twiddling_d;
-  void twiddle_next_parameter();
 };
 
 #endif /* PID_H */
