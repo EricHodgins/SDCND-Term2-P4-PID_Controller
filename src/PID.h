@@ -1,10 +1,12 @@
 #ifndef PID_H
 #define PID_H
 
+#include <uWS/uWS.h>
+
 class PID {
 private:
-  void reset();
-  void twiddle_next_parameter();
+void twiddle_next_parameter();
+
 public:
   /*
   * Errors
@@ -44,6 +46,10 @@ public:
   * Calculate the total PID error.
   */
   double TotalError();
+
+
+  void Twiddle();
+  bool Restart(uWS::WebSocket<uWS::SERVER> ws);
 
 };
 

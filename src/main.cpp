@@ -61,20 +61,17 @@ int main()
           */
           pid.UpdateError(cte);
           steer_value = pid.TotalError();
-
-
+          pid.Restart(ws);
 
           // DEBUG
           //std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
-          msgJson["throttle"] = 0.1;
+          msgJson["throttle"] = 0.2;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           //std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
-          std::string resetMsg = "42[\"reset\",{}]";
-          ws.send(resetMsg.data(), resetMsg.length(),  uWS::OpCode::TEXT);
         }
       } else {
         // Manual driving
