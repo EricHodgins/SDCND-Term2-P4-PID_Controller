@@ -5,6 +5,10 @@
 
 class PID {
 private:
+double p_run_error;
+double i_run_error;
+double d_run_error;
+
 void twiddle_next_parameter();
 
 public:
@@ -49,6 +53,8 @@ public:
 
 
   void Twiddle();
+  void Twiddle_Up();
+  void Twiddle_Down();
   bool Restart(uWS::WebSocket<uWS::SERVER> ws);
 
 };

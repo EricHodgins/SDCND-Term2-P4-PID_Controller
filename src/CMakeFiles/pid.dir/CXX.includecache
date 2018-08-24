@@ -11,6 +11,10 @@ PID.h
 /mnt/d/Udacity/SDCND_Term2/Project_4_PID-Controller/CarND-PID-Control-Project/src/PID.h
 limits
 -
+iostream
+-
+uWS/uWS.h
+-
 
 /mnt/d/Udacity/SDCND_Term2/Project_4_PID-Controller/CarND-PID-Control-Project/src/PID.h
 
@@ -74,6 +78,8 @@ vector
 uWS/uWS.h
 -
 iostream
+-
+string
 -
 json.hpp
 /mnt/d/Udacity/SDCND_Term2/Project_4_PID-Controller/CarND-PID-Control-Project/src/json.hpp
