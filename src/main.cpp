@@ -28,13 +28,16 @@ std::string hasData(std::string s) {
   return "";
 }
 
+bool twiddle = false;
 int main()
 {
   uWS::Hub h;
 
   PID pid;
   // TODO: Initialize the pid variable.
-  pid.Init(0.125, 0.00015, 2.8);
+  pid.Init(0.125, 0.000156, 3.09);
+
+  pid.is_twiddle_on = twiddle;
   //pid.Init(0.134611, 0.000270736, 3.05349);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
@@ -61,14 +64,14 @@ int main()
           */
           pid.UpdateError(cte);
           steer_value = pid.TotalError();
-          pid.Restart(ws);
+          if (twiddle) pid.Restart(ws);
 
           // DEBUG
           //std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
-          msgJson["throttle"] = 0.2;
+          msgJson["throttle"] = 0.4;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           //std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);

@@ -26,6 +26,8 @@ public:
   double Ki;
   double Kd;
 
+  bool is_twiddle_on;
+
   /*
   * Constructor
   */
@@ -53,8 +55,8 @@ public:
 
 
   void Twiddle();
-  void Twiddle_Up();
-  void Twiddle_Down();
+  void Increase_Params();
+  void Decrease_Params_To_Original();
   bool Restart(uWS::WebSocket<uWS::SERVER> ws);
 
 };
