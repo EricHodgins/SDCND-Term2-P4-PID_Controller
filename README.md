@@ -63,6 +63,9 @@ for instructions and the project rubric.
 
 * You don't have to follow this directory structure, but if you do, your work
   will span all of the .cpp files here. Keep an eye out for TODOs.
+  
+## Reflection
+The final PID parameters were determined through a combination of manual tuning and using the Twiddle algorith.  I manually tried Kp=0.125, Ki=0.00015 & Kd=0.8.  THen further using Twiddle to get Kp=0.125, Ki=0.000156, Kd=3.09.  I ended up tuning each parameter individually.  Adjusting any of those parameters can cause some chaotic driving.  For example leaving Kd=0.8 will simply make the car drive off road.
 
 ## Call for IDE Profiles Pull Requests
 
